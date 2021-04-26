@@ -1,8 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 
-import HomeCompoment from './components/Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+//import HomeCompoment from './components/Home';
 import Navbar from './components/NavbarComponent';
 // import LoginComponent from './components/Login'
 //import RegisterCompoment from './components/Register'
@@ -11,10 +13,12 @@ import Navbar from './components/NavbarComponent';
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <HomeCompoment />
-    </div>
+    <React.Fragment>
+      <Router>
+        <Navbar />
+        
+      </Router>
+    </React.Fragment>
   );
 }
 
