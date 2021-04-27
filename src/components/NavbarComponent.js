@@ -11,6 +11,7 @@ import LoginComponent from './Login';
 import RegisterComponent from './Register';
 import ResultComponent from './Result';
 import RateComponent from './Rate';
+import SearchResultsComponent from './SearchResults';
 
 class NavbarComponent extends React.Component {
   render() {
@@ -56,6 +57,9 @@ class NavbarComponent extends React.Component {
                 </Route>
                 <Route path="/rate">
                   <RateComponent />
+                </Route>
+                <Route path="/search">
+                  <SearchResultsComponent />
                 </Route>
               </Switch>
             </Router>

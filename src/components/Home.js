@@ -28,7 +28,7 @@ function Home() {
             <div class="input-group col-md-12">
               <input class="form-control py-2" type="search" placeholder="Brock University..." id="example-search-input"></input>
               <span class="input-group-append">
-              <Link to={'/result'} className="btn btn-primary">Search</Link>
+              <Link to={'/search'} className="btn btn-primary">Search</Link>
               </span>
             </div>
             <br />
@@ -36,7 +36,7 @@ function Home() {
             <div class="input-group col-md-12">
               <input class="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input"></input>
               <span class="input-group-append">
-              <Link to={'/result'} className="btn btn-primary">Search</Link>
+              <Link to={'/search'} className="btn btn-primary">Search</Link>
               </span>
             </div>
           </div>
