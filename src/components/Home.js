@@ -18,14 +18,23 @@ function Home() {
         <div class="container-fluid">
           <div class="jumbotron jumbotron-fluid text-center" >
             <h1 class="jumbotron-heading">Welcome to Rate My Scholar</h1>
-            <p class="text-muted">
+            <p>
               With this complex and incredible site, you can peruse the quality of all your colleagues.
               Not just your professor.
-              <br />
-              <h5>Begin your search by entering a school below.</h5>
+              <br/>
+              <br/>
+              <h5>Begin your search by entering a School name below.</h5>
             </p>
             <div class="input-group col-md-12">
-              <input class="form-control py-2" type="search" value="" id="example-search-input"></input>
+              <input class="form-control py-2" type="search" placeholder="Brock University..." id="example-search-input"></input>
+              <span class="input-group-append">
+              <Link to={'/result'} className="btn btn-primary">Search</Link>
+              </span>
+            </div>
+            <br />
+              <h5>Or by entering a Professor name below.</h5>
+            <div class="input-group col-md-12">
+              <input class="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input"></input>
               <span class="input-group-append">
               <Link to={'/result'} className="btn btn-primary">Search</Link>
               </span>

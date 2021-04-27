@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import HomeCompoment from './Home';
-import LoginComponent from './Login'
-import RegisterComponent from './Register'
-import ResultComponent from './Result'
-
+import LoginComponent from './Login';
+import RegisterComponent from './Register';
+import ResultComponent from './Result';
+import RateComponent from './Rate';
 
 class NavbarComponent extends React.Component {
   render() {
@@ -26,13 +26,13 @@ class NavbarComponent extends React.Component {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/login">Login</Nav.Link>
                     <Nav.Link href="/register">Register</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                    {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                       <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                       <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                       <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
+                    </NavDropdown> */}
                   </Nav>
                   <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -41,6 +41,7 @@ class NavbarComponent extends React.Component {
                 </Navbar.Collapse>
               </Navbar>
               <Switch>
+                {/* Add the routes and components here to provide links */}
                 <Route exact path="/">
                   <HomeCompoment />
                 </Route>
@@ -52,6 +53,9 @@ class NavbarComponent extends React.Component {
                 </Route>
                 <Route path="/result">
                   <ResultComponent />
+                </Route>
+                <Route path="/rate">
+                  <RateComponent />
                 </Route>
               </Switch>
             </Router>

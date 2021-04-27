@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Login.css';
+import { Link } from 'react-router-dom';
 import fullstar from '../resources/star.png';
 import halfstar from '../resources/half_star.png';
 import emptystar from '../resources/empty_star.png';
@@ -23,7 +24,7 @@ function Result() {
                         <hr class="my-2" />
                         <p>More info</p>
                         <p class="lead">
-                            <a class="btn btn-primary btn-lg" href="rate.html" role="button">Rate this Scholar</a>
+                            <Link to={'/rate'} className="btn btn-primary">Rate this Scholar</Link>
                         </p>
                     </div>
                 </div>
