@@ -8,7 +8,8 @@ import {
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import HomeCompoment from './Home';
 import LoginComponent from './Login'
-import RegisterCompoment from './Register'
+import RegisterComponent from './Register'
+import ResultComponent from './Result'
 
 
 class NavbarComponent extends React.Component {
@@ -18,7 +19,7 @@ class NavbarComponent extends React.Component {
 
             <Router>
               <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                <Navbar.Brand href="#home">Rate My Scholar</Navbar.Brand>
+                <Navbar.Brand href="/">Rate My Scholar</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mr-auto">
@@ -47,7 +48,10 @@ class NavbarComponent extends React.Component {
                   <LoginComponent />
                 </Route>
                 <Route path="/register">
-                  <RegisterCompoment />
+                  <RegisterComponent />
+                </Route>
+                <Route path="/result">
+                  <ResultComponent />
                 </Route>
               </Switch>
             </Router>

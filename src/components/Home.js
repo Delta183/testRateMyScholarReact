@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Home.css';
 
+import { Link } from 'react-router-dom';
 import student_image from '../resources/student_stock.jpeg';
 import professor_image from '../resources/professor_stock.jpeg';
 import faculty_image from '../resources/principal_stock.jpeg';
@@ -26,9 +27,7 @@ function Home() {
             <div class="input-group col-md-12">
               <input class="form-control py-2" type="search" value="" id="example-search-input"></input>
               <span class="input-group-append">
-                <button onclick="window.location.href='result.html';" class="btn btn-outline-secondary" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
+              <Link to={'/result'} className="btn btn-primary">Search</Link>
               </span>
             </div>
           </div>

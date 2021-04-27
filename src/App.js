@@ -16,7 +16,6 @@ function App() {
     <React.Fragment>
       <Router>
         <Navbar />
-        
       </Router>
     </React.Fragment>
   );
