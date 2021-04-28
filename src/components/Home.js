@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Home.css';
 
 import HomeSearchHeaderComponent from './HomeSearchHeaderComponent';
-import student_image from '../resources/student_stock.jpeg';
+import student_image from '../resources/student_stock.jpg';
 import professor_image from '../resources/professor_stock.jpeg';
 import faculty_image from '../resources/principal_stock.jpeg';
 import university_image from '../resources/university_stock.jpeg';
