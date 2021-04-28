@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchResultListComponent from './SearchResultListComponent';
+import { Link } from 'react-router-dom';
 
 
 class SearchResults extends React.Component {
@@ -43,6 +44,14 @@ class SearchResults extends React.Component {
     }
 
     render() {
+        let result;
+        const searchString = this.props.match.params.query;
+        if (searchString === "null") {
+            result = <h1 class="font-weight-bold" style={{ color: "white" }}>No name entered.</h1>
+        }
+        else {
+            result = <h1 class="font-weight-bold" style={{ color: "white" }}>Showing results for: {searchString} </h1>
+        }
         return (
             <div className="container" style={{ paddingTop: "3%", paddingBottom: "3%" }}>
                 <div className="row">
@@ -78,11 +87,16 @@ class SearchResults extends React.Component {
                     </div>
                 </div>
                 <div class="row" style={{ paddingTop: "1%" }}>
-                    <h1 class="font-weight-bold" style={{ color: "white" }}>Showing results for: {this.props.match.params.query} </h1>
+                    {result}
                    <SearchResultListComponent
                     searchResults={this.state.searchResults}
                    /> 
                     </div>
+                    <div style={{padding:"1%"}} className="text-center" >
+                        <p style={{color:"white"}}>If the scholar you are looking for is absent, you can add it here</p>
+        <Link to="/addNewScholar" className="btn btn-primary">Add New Scholar</Link>
+        </div>
+
             </div>
         );
     }

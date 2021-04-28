@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchResultListItemComponent from './SearchResultListItemCompnent';
+import SearchResultListItemComponent from './SearchResultListItemComponent';
 
 class SearchResultListComponent extends React.Component {
     render() {
