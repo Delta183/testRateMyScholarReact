@@ -6,34 +6,40 @@ class SearchResultListItemComponent extends React.Component {
     render() {
         let result;
         const positionNumber = this.props.position;
-        if(positionNumber === 0){
+        if (positionNumber === 0) {
             result = <p class="type m-0">Professor</p>;
         }
-        else if(positionNumber === 1){
+        else if (positionNumber === 1) {
             result = <p class="type m-0">Student</p>;
         }
-        else{
+        else {
             result = <p class="type m-0">TA</p>;
         }
         return (
             <tr>
                 <td>
                     <div class="widget-26-job-title">
-                        <Link to={'/result'}><a>{this.props.name}</a></Link>
+                        <Link to={'/result'}><a class="type m-0">{this.props.name}</a></Link>
                     </div>
                 </td>
                 <td>
                     <div class="widget-26-job-info">
-                        <p class="type m-0">{result}</p>
+                        {result}
                     </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-salary">{this.props.rating}</div>
+                    <div class="widget-26-job-info">
+                        <p class="type m-0">{this.props.school}</p>
+                    </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-category bg-soft-base">
-                        <i class="indicator bg-base"></i>
-                        <span>{this.props.faculty}</span>
+                    <div class="widget-26-job-info">
+                    <p class="type m-0">{this.props.rating}</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="widget-26-job-info">
+                    <p class="type m-0">{this.props.faculty}</p>
                     </div>
                 </td>
             </tr>
