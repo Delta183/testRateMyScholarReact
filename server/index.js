@@ -14,11 +14,8 @@ const db = mysql.createPool({
 
 app.get('/', (req, res) =>{
     
-    const sqlInsert = "INSERT INTO `accounts` (user_Name, pass_Word, email) VALUES ('7777777','7777777', '7777777');";
+    //const sqlInsert = "INSERT INTO `accounts` (user_Name, pass_Word, email) VALUES ('7777777','7777777', '7777777');";
     //"INSERT INTO `accounts` (user_Name, pass_Word, email) VALUES ('555555','555555', '555555');";
-    db.query(sqlInsert, (err, result) =>{
-        res.send('hello world on 3001 sql worked21321');
-    })
 });
 
 app.listen(3001, () => {

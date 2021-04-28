@@ -12,6 +12,10 @@ import Navbar from './components/NavbarComponent';
 
 
 function App() {
+
+  //const [, setMovieName] = useState('');
+  //const [] = useState('');
+
   return (
     <React.Fragment>
       <Router>
