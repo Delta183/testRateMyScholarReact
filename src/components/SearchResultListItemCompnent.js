@@ -7,39 +7,39 @@ class SearchResultListItemComponent extends React.Component {
         let result;
         const positionNumber = this.props.position;
         if (positionNumber === 0) {
-            result = <p class="type m-0">Professor</p>;
+            result = <p className="type m-0">Professor</p>;
         }
         else if (positionNumber === 1) {
-            result = <p class="type m-0">Student</p>;
+            result = <p className="type m-0">Student</p>;
         }
         else {
-            result = <p class="type m-0">TA</p>;
+            result = <p className="type m-0">TA</p>;
         }
         return (
             <tr>
                 <td>
-                    <div class="widget-26-job-title">
-                        <Link to={'/result'}><a class="type m-0">{this.props.name}</a></Link>
+                    <div className="widget-26-job-title">
+                        <Link to={'/result'}><p className="font-italic type m-0">{this.props.name}</p></Link>
                     </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-info">
+                    <div className="widget-26-job-info">
                         {result}
                     </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-info">
-                        <p class="type m-0">{this.props.school}</p>
+                    <div className="widget-26-job-info">
+                        <p className="type m-0">{this.props.school}</p>
                     </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-info">
-                    <p class="type m-0">{this.props.rating}</p>
+                    <div className="widget-26-job-info">
+                    <p className="type m-0">{this.props.rating}</p>
                     </div>
                 </td>
                 <td>
-                    <div class="widget-26-job-info">
-                    <p class="type m-0">{this.props.faculty}</p>
+                    <div className="widget-26-job-info">
+                    <p className="type m-0">{this.props.faculty}</p>
                     </div>
                 </td>
             </tr>

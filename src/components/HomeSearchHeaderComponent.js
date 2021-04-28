@@ -21,26 +21,26 @@ class HomeSearchHeaderComponent extends React.Component {
 
     render() {
         return (
-            <div class="jumbotron jumbotron-fluid text-center" >
-            <h1 class="jumbotron-heading">Welcome to Rate My Scholar</h1>
-            <p>
+            <div className="jumbotron jumbotron-fluid text-center" >
+            <h1 className="jumbotron-heading">Welcome to Rate My Scholar</h1>
+            <div>
+              <p>
               With this complex and incredible site, you can peruse the quality of all your colleagues.
               Not just your professor.
-              <br/>
-              <br/>
+              </p>
               <h5>Begin your search by entering a School name below.</h5>
-            </p>
-            <div class="input-group col-md-12">
-              <input class="form-control py-2" type="search" placeholder="Brock University..." id="example-search-input"></input>
-              <span class="input-group-append">
+            </div>
+            <div className="input-group col-md-12">
+              <input className="form-control py-2" type="search" placeholder="Brock University..." id="example-search-input"></input>
+              <span className="input-group-append">
               <Link to={'/search'} className="btn btn-primary">Search</Link>
               </span>
             </div>
             <br />
               <h5>Or by entering a Scholar name below.</h5>
-            <div class="input-group col-md-12">
-              <input class="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input" onChange={this.handleScholarTextChange}></input>
-              <span class="input-group-append">
+            <div className="input-group col-md-12">
+              <input className="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input" onChange={this.handleScholarTextChange}></input>
+              <span className="input-group-append">
               <Link to={`/search/${this.state.scholarQuery}`} className="btn btn-primary">Search</Link>
               </span>
             </div>

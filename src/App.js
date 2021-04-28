@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 
 //import HomeCompoment from './components/Home';
 import Navbar from './components/NavbarComponent';
