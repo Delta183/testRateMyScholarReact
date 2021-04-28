@@ -58,9 +58,7 @@ class NavbarComponent extends React.Component {
                 <Route path="/rate">
                   <RateComponent />
                 </Route>
-                <Route path="/search">
-                  <SearchResultsComponent />
-                </Route>
+                <Route path="/search/:query" component={SearchResultsComponent} />
               </Switch>
             </Router>
       </div>

@@ -9,6 +9,14 @@ class HomeSearchHeaderComponent extends React.Component {
         this.state = {
             scholarQuery: null,
         };
+
+        this.handleScholarTextChange = this.handleScholarTextChange.bind(this);
+    }
+
+    handleScholarTextChange(event) {
+        this.setState({
+            scholarQuery: event.target.value
+        });
     }
 
     render() {
@@ -31,9 +39,9 @@ class HomeSearchHeaderComponent extends React.Component {
             <br />
               <h5>Or by entering a Scholar name below.</h5>
             <div class="input-group col-md-12">
-              <input class="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input"></input>
+              <input class="form-control py-2" type="search" placeholder="John Doe..." id="example-search-input" onChange={this.handleScholarTextChange}></input>
               <span class="input-group-append">
-              <Link to={'/search'} className="btn btn-primary">Search</Link>
+              <Link to={`/search/${this.state.scholarQuery}`} className="btn btn-primary">Search</Link>
               </span>
             </div>
           </div>
