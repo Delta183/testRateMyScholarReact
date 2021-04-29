@@ -51,6 +51,7 @@ class SearchResultListComponent extends React.Component {
                                                                 faculty={searchResult.faculty}
                                                                 rating={searchResult.rating}
                                                                 school={searchResult.school}
+                                                                id={searchResult.id}
                                                                 key={searchResult.id}
                                                             />
                                                         );

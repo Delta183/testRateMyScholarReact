@@ -31,12 +31,8 @@ class NavbarComponent extends React.Component {
                 <Route exact path="/">
                   <HomeCompoment />
                 </Route>
-                <Route path="/result">
-                  <ResultComponent />
-                </Route>
-                <Route path="/rate">
-                  <RateComponent />
-                </Route>
+                <Route path="/result/:scholar_id" component={ResultComponent}/>
+                <Route path="/rate/:scholar_id" component={RateComponent}/>
                 <Route path="/addNewScholar">
                   <AddNewScholarComponent />
                 </Route>

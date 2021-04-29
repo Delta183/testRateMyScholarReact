@@ -19,7 +19,7 @@ class SearchResultListItemComponent extends React.Component {
             <tr>
                 <td>
                     <div className="widget-26-job-title">
-                        <Link to={'/result'}><p className="font-italic type m-0">{this.props.name}</p></Link>
+                        <Link to={`/result/${this.props.id}`}><p className="font-italic type m-0">{this.props.name}</p></Link>
                     </div>
                 </td>
                 <td>
