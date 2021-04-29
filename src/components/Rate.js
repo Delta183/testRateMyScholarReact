@@ -49,14 +49,14 @@ class Rate extends React.Component {
         if(this.state.rating !== '' && this.state.comment_text !== '' && this.state.commenter_name !== ''){
             this.putData();
             this.setState({
-                resultMessage : 'Comment successfully added. Feel free to add another or return to ',
+                resultMessage : 'Comment successfully added. Feel free to add another or go back to see your comment.',
                 isValidSubmit: true
             }) 
         }
         // All but commmenter name is filled
         else if(this.state.rating !== '' && this.state.comment_text !== '' && this.state.commenter_name === ''){
             this.setState({
-                resultMessage : 'Comment successfully added. Feel free to add another or return to ',
+                resultMessage : 'Comment successfully added. Feel free to add another or go back to see your comment.',
                 commenter_name: "Anonymous",
                 isValidSubmit: true,
             }) 
@@ -140,8 +140,7 @@ class Rate extends React.Component {
         let resultMessage;
         if(this.state.isValidSubmit === true){
             resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-success">
-                {this.state.resultMessage}{name}'s page by clicking  
-                <Link to={`/search/${name}`}>here</Link>
+                {this.state.resultMessage}
             </div>;
         }
         else{

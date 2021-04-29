@@ -16,6 +16,7 @@ class Result extends React.Component {
             position: '0',
             rating: 0,
             comments: [],
+            ratingAverage: 0,
             error: null
         };
 

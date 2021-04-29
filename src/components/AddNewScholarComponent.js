@@ -1,5 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+
 
 class AddNewScholarComponent extends React.Component {
     constructor(props) {
@@ -45,7 +47,6 @@ class AddNewScholarComponent extends React.Component {
         });
     }
 
-
     handleSubmit(event) {
         if(this.state.school !== '' && this.state.name !== '' && this.state.profession !== null && this.state.faculty !== ''){
             this.putData();
@@ -78,7 +79,6 @@ class AddNewScholarComponent extends React.Component {
             body: JSON.stringify({
                 name: this.state.name,
                 faculty: this.state.faculty,
-                comments: '',
                 rating: 0,
                 school: this.state.school,
                 position: this.state.profession,
@@ -96,10 +96,15 @@ class AddNewScholarComponent extends React.Component {
             });
     }
 
+    
+
     render() {
         let resultMessage;
+        let archivedName = this.state.name;
         if(this.state.isValidSubmit === true){
-            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-success">{this.state.resultMessage}</div>;
+            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-success">
+                {this.state.resultMessage}
+            </div>;
         }
         else{
             resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-danger">{this.state.resultMessage}</div>;
