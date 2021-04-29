@@ -47,10 +47,10 @@ class SearchResults extends React.Component {
         let result;
         const searchString = this.props.match.params.query;
         if (searchString === "null") {
-            result = <h1 class="font-weight-bold" style={{ color: "white" }}>No name entered.</h1>
+            result = <h1 className="font-weight-bold" style={{ color: "white" }}>No name entered.</h1>
         }
         else {
-            result = <h1 class="font-weight-bold" style={{ color: "white" }}>Showing results for: {searchString} </h1>
+            result = <h1 className="font-weight-bold" style={{ color: "white" }}>Showing results for: {searchString} </h1>
         }
         return (
             <div className="container" style={{ paddingTop: "3%", paddingBottom: "3%" }}>
@@ -75,7 +75,7 @@ class SearchResults extends React.Component {
                                                 </div>
                                                 <div className="col-lg-1 col-md-3 col-sm-12 p-0">
                                                     <button type="submit" className="btn btn-base">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                                     </button>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@ class SearchResults extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="row" style={{ paddingTop: "1%" }}>
+                <div className="row" style={{ paddingTop: "1%" }}>
                     {result}
                    <SearchResultListComponent
                     searchResults={this.state.searchResults}

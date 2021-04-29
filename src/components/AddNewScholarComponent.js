@@ -6,9 +6,11 @@ class AddNewScholarComponent extends React.Component {
         super(props);
         this.state = {
             name: '',
-            faculty:'',
-            school:'',
-            profession: '0'
+            faculty: '',
+            school: '',
+            profession: '0',
+            resultMessage: '',
+            isValidSubmit: false
         };
 
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -16,28 +18,94 @@ class AddNewScholarComponent extends React.Component {
         this.handleSchoolChange = this.handleSchoolChange.bind(this);
         this.handleProfessionChange = this.handleProfessionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-      }
-      handleNameChange(event) {
-        this.setState({name: event.target.value});
-      }
-      handleFacultyChange(event) {
-        this.setState({faculty: event.target.value});
-      }
-      handleSchoolChange(event) {
-        this.setState({school: event.target.value});
-      }
-      handleProfessionChange(event) {
-        this.setState({profession: event.target.value});
-      }
-      
-    
-      handleSubmit(event) {
-        alert(this.state.name + ',' + this.state.faculty + ',' + this.state.school + ',' + this.state.profession);
+    } // constructor
+
+    handleNameChange(event) {
+        this.setState({ 
+            name: event.target.value,
+            resultMessage:''
+        });
+    }
+    handleFacultyChange(event) {
+        this.setState({ 
+            faculty: event.target.value,
+            resultMessage:''
+         });
+    }
+    handleSchoolChange(event) {
+        this.setState({ 
+            school: event.target.value,
+            resultMessage:''
+        });
+    }
+    handleProfessionChange(event) {
+        this.setState({ 
+            profession: event.target.value,
+            resultMessage:''
+        });
+    }
+
+
+    handleSubmit(event) {
+        if(this.state.school !== '' && this.state.name !== '' && this.state.profession !== null && this.state.faculty !== ''){
+            this.putData();
+            this.setState({
+                resultMessage : 'User successfully added. Feel free to add another or return to the home page.',
+                school : '',
+                name:'',
+                faculty: '',
+                isValidSubmit: true
+            }) 
+        }
+        else{
+            this.setState({
+                resultMessage : 'Please fill out all the fields to submit a new scholar.',
+                isValidSubmit: false
+            }) 
+        }
         event.preventDefault();
-      }
-    
+    }
+
+    putData() {
+
+        const fetchConfig = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": "some secret key only your app knows OR User ID"
+                // TODO: Add ID (int, primary key) to the Accounts table
+            },
+            body: JSON.stringify({
+                name: this.state.name,
+                faculty: this.state.faculty,
+                comments: '',
+                rating: 0,
+                school: this.state.school,
+                position: this.state.profession,
+                profile_picture: ''
+            })
+        };
+
+        fetch('https://rate-my-scholar-server-12.herokuapp.com/scholars', fetchConfig)
+            .then((response) => response.json())
+            .then(() => {
+                console.log("Added to database successfully");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     render() {
-        return (
+        let resultMessage;
+        if(this.state.isValidSubmit === true){
+            resultMessage = <div style={{paddingTop:"2%"}} className="text-success">{this.state.resultMessage}</div>;
+        }
+        else{
+            resultMessage = <div style={{paddingTop:"2%"}} className="text-danger">{this.state.resultMessage}</div>;
+        }
+
+        return (            
             <div className="container">
                 <h1 className="display-4 d-flex justify-content-center" style={{ color: "white" }}>Add a new Scholar</h1>
                 <div className="row justify-content-center">
@@ -67,11 +135,10 @@ class AddNewScholarComponent extends React.Component {
                                         </select>
                                     </div>
                                     <div className="col-md-6 offset-md-4">
-                                        <button type="submit" value="submit" className="btn btn-primary">
-                                            Add Scholar
-                                </button>
+                                        <button type="submit" value="submit" className="btn btn-primary">Add Scholar</button>
                                     </div>
                                 </form>
+                                {resultMessage}
                             </div>
                         </div>
                     </div>
