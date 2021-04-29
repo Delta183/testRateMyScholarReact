@@ -66,24 +66,18 @@ class SearchResults extends React.Component {
             result = <h1 className="font-weight-bold" style={{ color: "white" }}>Showing results for: {searchString} </h1>
         }
         return (
-            <div className="container" style={{ paddingTop: "3%", paddingBottom: "3%" }}>
+            <div className="container" style={{ paddingBottom: "3%" }}>
                 <div className="row">
                     <div className="col-lg-12 card-margin">
-                        <div className="card search-form">
-                            <div className="card-body p-0">
+                        <div className="search-form">
+                            <div className="jumbotron text-center">
+                                <h1 className="jumbotron-heading ">Search for another scholar here: </h1>
+                               
                                 <form id="search-form">
                                     <div className="row">
                                         <div className="col-12">
                                             <div className="row no-gutters">
-                                                <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                                                    <select className="form-control" id="exampleFormControlSelect1">
-                                                        <option>School</option>
-                                                        <option>Professor</option>
-                                                        <option>Student</option>
-                                                        <option>Faculty</option>
-                                                    </select>
-                                                </div>
-                                                <div className="col-lg-8 col-md-6 col-sm-12 p-0">
+                                                <div className="col-lg-11 col-md-6 col-sm-12 p-0">
                                                     <input type="text" onChange={this.handleSearchbarChange} placeholder="Search..." className="form-control" id="search" />
                                                 </div>
                                                 <div className="col-lg-1 col-md-3 col-sm-12 p-0" onClick={this.updateSearch}>
@@ -93,6 +87,7 @@ class SearchResults extends React.Component {
                                         </div>
                                     </div>
                                 </form>
+                                <p className="font-weight-bold">Click on a name in the results to check all comments on that scholar</p>
                             </div>
                         </div>
                     </div>

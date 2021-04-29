@@ -99,10 +99,10 @@ class AddNewScholarComponent extends React.Component {
     render() {
         let resultMessage;
         if(this.state.isValidSubmit === true){
-            resultMessage = <div style={{paddingTop:"2%"}} className="text-success">{this.state.resultMessage}</div>;
+            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-success">{this.state.resultMessage}</div>;
         }
         else{
-            resultMessage = <div style={{paddingTop:"2%"}} className="text-danger">{this.state.resultMessage}</div>;
+            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-danger">{this.state.resultMessage}</div>;
         }
 
         return (            

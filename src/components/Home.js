@@ -76,10 +76,7 @@ function Home() {
             <div className="row featurette">
               <div className="col-md-7">
                 <h2 className="featurette-heading">No need to sign in to read and persue the reviews. Though you will need to in order to write one.</h2>
-                <p className="lead">Rate My Scholar does not demand that you create an account to use a majority of the services on this site. Though you will need to do so as reviews
-                require that they be made by verified accounts. If this if your first visit, you should press the "Register" link on the navigation bar. Otherwise, refer to the login page
-                if you already have an account.
-          </p>
+                <p className="lead">Rate My Scholar does not demand that you create an account to use the site. Though you can also check the About page to learn more about the creation.          </p>
               </div>
               <div className="col-md-5">
                 <img className="featurette-image img-fluid mx-auto" 

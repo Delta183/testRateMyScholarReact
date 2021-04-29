@@ -1,9 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
-import fullstar from '../resources/star.png';
-import halfstar from '../resources/half_star.png';
-import emptystar from '../resources/empty_star.png';
 import CommentComponent from './CommentComponent';
 import React from 'react';
 
@@ -102,24 +99,20 @@ class Result extends React.Component {
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">
                         <h1 className="display-2">{this.state.name}</h1>
-                        <p className="lead">{profession} at {this.state.school} in {this.state.faculty}</p>
+                        <h4 className="font-italic text-muted">{profession} at {this.state.school} in {this.state.faculty}</h4>
                         <h1 className="display-5">Quality: {this.state.rating}</h1>
-                        <div className="d-flex flex-row">
-                            <img src={fullstar} alt="full star" width="50px" height="50px" />
-                            <img src={fullstar} alt="full star" width="50px" height="50px" />
-                            <img src={fullstar} alt="full star" width="50px" height="50px" />
-                            <img src={halfstar} alt="half star" width="50px" height="50px" />
-                            <img src={emptystar} alt="empty star" width="50px" height="50px" />
-                        </div>
                         <hr className="my-2" />
-                        <p>More info</p>
+                        <p>To leave a review of this scholar, press the button below.</p>
                         <p className="lead">
-                            <Link to={`/rate/${this.props.match.params.scholar_id}`} className="btn btn-primary">Rate this Scholar</Link>
+                            <Link to={`/rate/${this.props.match.params.scholar_id}/${this.state.name}`} className="btn btn-primary">Rate this Scholar</Link>
                         </p>
                     </div>
                 </div>
                 <div className="d-flex flex-column bd-highlight mb-3 ">
-                    <div className="" >
+                    <div className="container">
+                        <div className="text-center">
+                            <h1 style={{ backgroundColor:"white", opacity:"0.90"}} className="">Reviews from Scholars</h1>
+                        </div>
                         {this.state.comments.map((comment) => {
                             return (
                                 <CommentComponent

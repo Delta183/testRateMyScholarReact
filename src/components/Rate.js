@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class Rate extends React.Component {
     constructor(props) {
@@ -7,9 +9,11 @@ class Rate extends React.Component {
         this.state = {
             commenter_name: '',
             rating: 1,
+            scholarName: '',
             comment_text: '',
-            isValidSubmit: true,
+            isValidSubmit: false,
             didSubmitSucceed: null,
+            resultMessage: '',
             error: null
         };
 
@@ -22,17 +26,20 @@ class Rate extends React.Component {
 
     handleCommenterNameChange(event) {
         this.setState({ 
-            commenter_name: event.target.value
+            commenter_name: event.target.value,
+            resultMessage:''
         });
     }
     handleStarRatingChange(event) {
         this.setState({ 
-            rating: event.target.value
+            rating: event.target.value,
+            resultMessage:''
         });
     }
     handleCommentTextChange(event) {
         this.setState({ 
-            comment_text: event.target.value
+            comment_text: event.target.value,
+            resultMessage:''
         });
     }
 
@@ -42,12 +49,14 @@ class Rate extends React.Component {
         if(this.state.rating !== '' && this.state.comment_text !== '' && this.state.commenter_name !== ''){
             this.putData();
             this.setState({
+                resultMessage : 'Comment successfully added. Feel free to add another or return to ',
                 isValidSubmit: true
             }) 
         }
         // All but commmenter name is filled
         else if(this.state.rating !== '' && this.state.comment_text !== '' && this.state.commenter_name === ''){
             this.setState({
+                resultMessage : 'Comment successfully added. Feel free to add another or return to ',
                 commenter_name: "Anonymous",
                 isValidSubmit: true,
             }) 
@@ -56,6 +65,7 @@ class Rate extends React.Component {
         // Non-optional fields are not filled
         else{
             this.setState({
+                resultMessage : 'Please fill out all the fields to submit a valid review.',
                 isValidSubmit: false
             }) 
         }
@@ -95,18 +105,51 @@ class Rate extends React.Component {
             });
     }
 
+    componentDidMount(){
+        let scholarId = this.props.match.params.scholar_id;
+        const fetchConfig = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": "some secret key only your app knows OR User ID"
+                // TODO: Add ID (int, primary key) to the Accounts table
+            }
+        };
+
+        fetch('https://rate-my-scholar-server-12.herokuapp.com/scholars/' + scholarId, fetchConfig)
+            .then((response) => response.json())
+            .then((scholar) => {
+                console.log(scholar);
+                this.setState({
+                    scholarName: scholar.name,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({
+                    error: error
+                });
+            });
+    }
+
     render(){
         // if (this.state.didSubmitSucceed === true) {
         //     return (); // Show a new UI that says successfully added and a link to view that scholar page
         // }
-
+        let name = this.state.scholarName;
         let resultMessage;
-        if(this.state.isValidSubmit === false){
-            resultMessage = <div style={{paddingTop:"2%"}} className="text-danger">Please fill out all the fields to submit a new scholar.</div>;
+        if(this.state.isValidSubmit === true){
+            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-success">
+                {this.state.resultMessage}{name}'s page by clicking  
+                <Link to={`/search/${name}`}>here</Link>
+            </div>;
+        }
+        else{
+            resultMessage = <div style={{paddingTop:"2%"}} className="font-weight-bold text-danger">{this.state.resultMessage}</div>;
         }
         return (
             <div className="container">
-                <h1 className="display-4 d-flex justify-content-center" style={{color: "white"}}>Rating: John Doe</h1>
+                <h1 className="display-4 d-flex justify-content-center" style={{color: "white"}}>Rating Scholar: {name}</h1>
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">

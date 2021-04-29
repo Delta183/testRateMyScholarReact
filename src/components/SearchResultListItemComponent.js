@@ -13,7 +13,7 @@ class SearchResultListItemComponent extends React.Component {
             result = <p className="type m-0">Student</p>;
         }
         else {
-            result = <p className="type m-0">TA</p>;
+            result = <p className="type m-0">Teaching Assistant</p>;
         }
         return (
             <tr>
