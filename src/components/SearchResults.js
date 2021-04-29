@@ -10,11 +10,51 @@ class SearchResults extends React.Component {
 
         this.state = {
             searchResults: [],
+            innerSearchString:'',
             error: null,
         };
+        this.handleSearchbarChange = this.handleSearchbarChange.bind(this);
+        this.updateSearch = this.updateSearch.bind(this);
     }
+    
 
     componentDidMount() {
+        const { query } = this.props.match.params;
+
+        const fetchConfig = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": "some secret key only your app knows OR User ID"
+                // TODO: Add ID (int, primary key) to the Accounts table
+            }
+        };
+
+        fetch('https://rate-my-scholar-server-12.herokuapp.com/scholar_search/' + query, fetchConfig)
+        .then((response) => response.json())
+        .then((searchResults) => {
+            console.log(searchResults);
+            this.setState({
+                searchResults: searchResults,
+                error: null,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+            this.setState({
+                error: error,
+            });
+        });
+    }
+
+    handleSearchbarChange(event) {
+        this.setState({ 
+            innerSearchString: event.target.value,
+        });
+    }
+
+
+    updateSearch() {
         const { query } = this.props.match.params;
 
         const fetchConfig = {
@@ -71,12 +111,10 @@ class SearchResults extends React.Component {
                                                     </select>
                                                 </div>
                                                 <div className="col-lg-8 col-md-6 col-sm-12 p-0">
-                                                    <input type="text" placeholder="Search..." className="form-control" id="search" name="search" />
+                                                    <input type="text" onChange={this.handleSearchbarChange} placeholder="Search..." className="form-control" id="search" />
                                                 </div>
-                                                <div className="col-lg-1 col-md-3 col-sm-12 p-0">
-                                                    <button type="submit" className="btn btn-base">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                                    </button>
+                                                <div className="col-lg-1 col-md-3 col-sm-12 p-0" onClick={this.updateSearch}>
+                                                <Link to={`/search/${this.state.innerSearchString}`} className="btn btn-primary">Search</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +131,7 @@ class SearchResults extends React.Component {
                    /> 
                     </div>
                     <div style={{padding:"1%"}} className="text-center" >
-                        <p style={{color:"white"}}>If the scholar you are looking for is absent, you can add it here</p>
+                        <p className="font-weight-bold" style={{color:"white"}}>If the scholar you are looking for is absent, you can add it here</p>
         <Link to="/addNewScholar" className="btn btn-primary">Add New Scholar</Link>
         </div>
 
