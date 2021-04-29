@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import fullstar from '../resources/star.png';
 import halfstar from '../resources/half_star.png';
 import emptystar from '../resources/empty_star.png';
+import CommentComponent from './CommentComponent';
 import React from 'react';
 
 
@@ -17,12 +18,13 @@ class Result extends React.Component {
             school: '',
             position: '0',
             rating: 0,
+            comments: [],
             error: null
         };
-       
+
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const scholarId = this.props.match.params.scholar_id;
 
         const fetchConfig = {
@@ -46,6 +48,7 @@ class Result extends React.Component {
                     rating: scholar.rating,
                     error: null,
                 });
+                this.fetchCommentForScholar(scholarId);
             })
             .catch((error) => {
                 console.log(error);
@@ -54,6 +57,34 @@ class Result extends React.Component {
                 });
             });
     }
+
+    fetchCommentForScholar(scholarId) {
+        const fetchConfig = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": "some secret key only your app knows OR User ID"
+                // TODO: Add ID (int, primary key) to the Accounts table
+            }
+        };
+
+        fetch('https://rate-my-scholar-server-12.herokuapp.com/comments/' + scholarId, fetchConfig)
+            .then((response) => response.json())
+            .then((comments) => {
+                console.log(comments);
+                this.setState({
+                    comments: comments
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({
+                    error: error
+                });
+            });
+    }
+
+
     render() {
         let profession;
         const positionNumber = this.props.position;
@@ -89,80 +120,17 @@ class Result extends React.Component {
                 </div>
                 <div className="d-flex flex-column bd-highlight mb-3 ">
                     <div className="" >
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-
-                        </div>
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-                        <div className="card" style={{ width: "18rem;" }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
+                        {this.state.comments.map((comment) => {
+                            return (
+                                <CommentComponent
+                                    commenterName={comment.commenter_name}
+                                    commentText={comment.text}
+                                    rating={comment.rating}
+                                    id={comment.id}
+                                    key={comment.id}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>

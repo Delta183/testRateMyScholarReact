@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
