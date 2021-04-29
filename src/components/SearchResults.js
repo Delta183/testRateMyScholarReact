@@ -10,52 +10,25 @@ class SearchResults extends React.Component {
 
         this.state = {
             searchResults: [],
-            innerSearchString:'',
+            innerSearchString: null,
             error: null,
         };
         this.handleSearchbarChange = this.handleSearchbarChange.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
     }
-    
 
     componentDidMount() {
-        const { query } = this.props.match.params;
-
-        const fetchConfig = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                // "Authorization": "some secret key only your app knows OR User ID"
-                // TODO: Add ID (int, primary key) to the Accounts table
-            }
-        };
-
-        fetch('https://rate-my-scholar-server-12.herokuapp.com/scholar_search/' + query, fetchConfig)
-        .then((response) => response.json())
-        .then((searchResults) => {
-            console.log(searchResults);
-            this.setState({
-                searchResults: searchResults,
-                error: null,
-            });
-        })
-        .catch((error) => {
-            console.log(error);
-            this.setState({
-                error: error,
-            });
-        });
+        this.updateSearch();
     }
 
     handleSearchbarChange(event) {
-        this.setState({ 
+        this.setState({
             innerSearchString: event.target.value,
         });
     }
 
-
     updateSearch() {
-        const { query } = this.props.match.params;
+        const query = this.state.innerSearchString || this.props.match.params.query;
 
         const fetchConfig = {
             method: "GET",
@@ -67,20 +40,20 @@ class SearchResults extends React.Component {
         };
 
         fetch('https://rate-my-scholar-server-12.herokuapp.com/scholar_search/' + query, fetchConfig)
-        .then((response) => response.json())
-        .then((searchResults) => {
-            console.log(searchResults);
-            this.setState({
-                searchResults: searchResults,
-                error: null,
+            .then((response) => response.json())
+            .then((searchResults) => {
+                console.log(searchResults);
+                this.setState({
+                    searchResults: searchResults,
+                    error: null,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({
+                    error: error,
+                });
             });
-        })
-        .catch((error) => {
-            console.log(error);
-            this.setState({
-                error: error,
-            });
-        });
     }
 
     render() {
@@ -114,7 +87,7 @@ class SearchResults extends React.Component {
                                                     <input type="text" onChange={this.handleSearchbarChange} placeholder="Search..." className="form-control" id="search" />
                                                 </div>
                                                 <div className="col-lg-1 col-md-3 col-sm-12 p-0" onClick={this.updateSearch}>
-                                                <Link to={`/search/${this.state.innerSearchString}`} className="btn btn-primary">Search</Link>
+                                                    <Link to={`/search/${this.state.innerSearchString}`} className="btn btn-primary">Search</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,14 +99,14 @@ class SearchResults extends React.Component {
                 </div>
                 <div className="row" style={{ paddingTop: "1%" }}>
                     {result}
-                   <SearchResultListComponent
-                    searchResults={this.state.searchResults}
-                   /> 
-                    </div>
-                    <div style={{padding:"1%"}} className="text-center" >
-                        <p className="font-weight-bold" style={{color:"white"}}>If the scholar you are looking for is absent, you can add it here</p>
-        <Link to="/addNewScholar" className="btn btn-primary">Add New Scholar</Link>
-        </div>
+                    <SearchResultListComponent
+                        searchResults={this.state.searchResults}
+                    />
+                </div>
+                <div style={{ padding: "1%" }} className="text-center" >
+                    <p className="font-weight-bold" style={{ color: "white" }}>If the scholar you are looking for is absent, you can add it here</p>
+                    <Link to="/addNewScholar" className="btn btn-primary">Add New Scholar</Link>
+                </div>
 
             </div>
         );
