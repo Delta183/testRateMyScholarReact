@@ -24,6 +24,7 @@ class NavbarComponent extends React.Component {
                   <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/search/null">Search</Nav.Link>
+                    <Nav.Link href="/addNewScholar">Add New Scholar</Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
