@@ -29,8 +29,6 @@ class Result extends React.Component {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                // "Authorization": "some secret key only your app knows OR User ID"
-                // TODO: Add ID (int, primary key) to the Accounts table
             }
         };
 
@@ -85,7 +83,7 @@ class Result extends React.Component {
 
     render() {
         let profession;
-        const positionNumber = this.props.position;
+        const positionNumber = this.state.position;
         if (positionNumber === 0) {
             profession = "Professor";
         }

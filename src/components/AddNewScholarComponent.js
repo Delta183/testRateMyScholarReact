@@ -10,7 +10,7 @@ class AddNewScholarComponent extends React.Component {
             name: '',
             faculty: '',
             school: '',
-            profession: '0',
+            profession: 0,
             resultMessage: '',
             isValidSubmit: false
         };
