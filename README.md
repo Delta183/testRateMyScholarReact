@@ -15,6 +15,13 @@ NOTE: This assumes you have installed a Node version >= 10 as per the [Create Re
 
 NOTE: In order for this website to function correctly, the associated server must be setup and initialized prior. 
 
+Installed libraries may need to be manually reinstalled with:
+
+```
+npm install
+```
+
+
 Since we're using Create React App for this, setting it up after initializing the server requires the following command:
 
 ```
