@@ -36,3 +36,9 @@ Once you are on the main screen, you can navigate to the search to find the part
 ## Deployment
 
 Heroku makes it really easy to deploy Create React Apps and we followed the instructions from this [wiki](https://blog.heroku.com/deploying-react-with-zero-configuration).
+
+## Credits
+
+Daniel Figueroa - Frontend Developer
+
+Aaron Muysson - Backend Developer
